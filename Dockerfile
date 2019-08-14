@@ -61,6 +61,9 @@ RUN mkdir -p /var/run/mysqld; \
     chown mysql:mysql /var/run/mysqld; \
     chmod 755 /start.sh /etc/apache2/foreground.sh
 
+COPY ./files/settings.php /var/www/html/web/sites/default/settings.php    
+COPY ./files/settings.local.php /var/www/html/web/sites/default/settings.local.php
+
 WORKDIR /var/www/html
 EXPOSE 22 80 3306 9000
 CMD ["/bin/bash", "/start.sh"]
